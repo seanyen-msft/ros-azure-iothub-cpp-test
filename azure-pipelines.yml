@@ -7,3 +7,5 @@ resources:
 
 jobs:
 - template: build.yml@templates  # Template reference
+  parameters:
+    ros_metapackage: 'ros-melodic-ros_core'
