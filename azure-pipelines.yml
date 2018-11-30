@@ -13,3 +13,4 @@ jobs:
       - script: |
           git clone https://github.com/ms-iot/abseil-cpp -b init_windows
           git clone https://github.com/ms-iot/ros_type_introspection -b init_windows
+        workingDirectory: '$(Build.ArtifactStagingDirectory)\src'
