@@ -16,11 +16,13 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
   topic_tools
+  ros_type_introspection
 )
 
 ## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
-
+find_package(azure_c_shared_utility REQUIRED)
+find_package(azure_iot_sdks REQUIRED)
+find_package(umqtt REQUIRED)
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
@@ -123,7 +125,7 @@ catkin_package(
 include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
-  ${catkin_INCLUDE_DIRS}/azure_iot_hub
+  ${IOTHUB_CLIENT_INCLUDES}
 )
 
 ## Declare a C++ library
@@ -156,22 +158,8 @@ link_directories(${catkin_LIBRARY_DIRS})
 ## Specify libraries to link a library or executable target against
 target_link_libraries(${PROJECT_NAME}_node
    ${catkin_LIBRARIES}
-   C:/opt/rosdeps/x64/lib/aziotsharedutil.lib
-   C:/opt/rosdeps/x64/lib/iothub_client.lib
-   C:/opt/rosdeps/x64/lib/parson.lib
-   C:/opt/rosdeps/x64/lib/hsm_security_client.lib
-   C:/opt/rosdeps/x64/lib/prov_auth_client.lib
-   C:/opt/rosdeps/x64/lib/iothub_client_mqtt_transport.lib
-   C:/opt/rosdeps/x64/lib/iothub_client_mqtt_ws_transport.lib
-   C:/opt/rosdeps/x64/lib/uhttp.lib
-   C:/opt/rosdeps/x64/lib/umqtt.lib
-   C:/opt/rosdeps/x64/lib/ros_type_introspection.lib
-   "C:/Program Files (x86)/Windows Kits/10/Lib/10.0.17134.0/um/x64/WS2_32.lib"
-   "C:/Program Files (x86)/Windows Kits/10/Lib/10.0.17134.0/um/x64/Secur32.lib"
-   "C:/Program Files (x86)/Windows Kits/10/Lib/10.0.17134.0/um/x64/Rpcrt4.lib"
-   "C:/Program Files (x86)/Windows Kits/10/Lib/10.0.17134.0/um/x64/Winhttp.lib"
-   "C:/Program Files (x86)/Windows Kits/10/Lib/10.0.17134.0/um/x64/Ncrypt.lib"
-   "C:/Program Files (x86)/Windows Kits/10/Lib/10.0.17134.0/um/x64/Crypt32.lib"
+   iothub_client
+   iothub_client_mqtt_ws_transport
 )
 
 #############
